@@ -35,6 +35,7 @@ public class ModeloService implements IModeloService {
 	public Modelo createModelo(ModeloDto modelo) {
 		Modelo modeloEntity = new Modelo();
 		modeloEntity.setModelo(modelo.modelo());
+		modeloEntity.setMarca(modelo.marca());
 		return modeloRepository.save(modeloEntity);
 	}
 
@@ -50,6 +51,7 @@ public class ModeloService implements IModeloService {
 		Modelo modeloEntity = modeloRepository.findById(idModelo)
 				.orElseThrow(() -> new NoSuchElementException("Modelo no encontrado con el ID: " + idModelo));
 		modeloEntity.setModelo(modelo.modelo());
+		modeloEntity.setMarca(modelo.marca());
 		return modeloRepository.save(modeloEntity);
 	}
 }
