@@ -22,5 +22,6 @@ public interface IClienteService {
 	
 	Cliente updateCliente(Long idCliente, ClienteDto cliente);
 	
+	List<Cliente> buscarClientesPorNombreApellidoPaternoApellidoMaternoTelefono(String searchTerm);
 	
 }

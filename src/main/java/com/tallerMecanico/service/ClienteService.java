@@ -110,4 +110,9 @@ public class ClienteService implements IClienteService {
 		return clienteRepository.save(clienteEntity);
 	}
 
+	
+	public List<Cliente> buscarClientesPorNombreApellidoPaternoApellidoMaternoTelefono(String searchTerm) {
+        return clienteRepository.findByNombreApellidoPaternoApellidoMaternoTelefonoLike(searchTerm);
+    }
+	
 }
