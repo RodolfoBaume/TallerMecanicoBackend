@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,7 +21,7 @@ public class TipoMotorService implements ITipoMotorService {
 	// Consulta todos
 	@Transactional(readOnly = true)
 	public List<TipoMotor> findAll() {
-		return (List<TipoMotor>) tipoMotorRepository.findAll();
+		return (List<TipoMotor>) tipoMotorRepository.findAll(Sort.by("idTipoMotor"));
 	}
 
 	// consulta por id
