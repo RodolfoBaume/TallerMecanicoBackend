@@ -6,6 +6,10 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -45,6 +49,13 @@ public class EmpleadoController {
 		return empleadoService.findAll();
 	}
 
+	// Consulta paginación
+	@GetMapping("/empleados/page/{page}")
+	public Page<Empleado> consultaPage(@PathVariable Integer page) {
+		Pageable pageable = PageRequest.of(page, 10, Sort.by("idEmpleado").ascending());
+		return empleadoService.findAllPage(pageable);
+	}
+
 	// Consulta por id
 	@GetMapping("/empleados/{id}")
 	public ResponseEntity<?> consultaPorID(@PathVariable Long id) {
@@ -65,7 +76,6 @@ public class EmpleadoController {
 		}
 		return new ResponseEntity<Empleado>(empleado, HttpStatus.OK);
 	}
-
 
 	// Modificar
 	@PutMapping("/empleados/{id}")

@@ -6,6 +6,10 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -40,6 +44,13 @@ public class OrdenServicioController {
 		return ordenServicioService.findAll();
 	}
 
+	// Consulta paginación
+	@GetMapping("/ordenesServicio/page/{page}")
+	public Page<OrdenServicio> consultaPage(@PathVariable Integer page) {
+		Pageable pageable = PageRequest.of(page, 10, Sort.by("idOrdenServicio").ascending());
+		return ordenServicioService.findAllPage(pageable);
+	}
+
 	// Consulta por id
 	@GetMapping("/ordenesServicio/{id}")
 	public ResponseEntity<?> consultaPorID(@PathVariable Long id) {
@@ -55,7 +66,8 @@ public class OrdenServicioController {
 		}
 
 		if (ordenServicio == null) {
-			response = "La Orden de Servicio con el ID: ".concat(id.toString()).concat(" no existe en la base de datos");
+			response = "La Orden de Servicio con el ID: ".concat(id.toString())
+					.concat(" no existe en la base de datos");
 			return new ResponseEntity<String>(response, HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<OrdenServicio>(ordenServicio, HttpStatus.OK);
@@ -98,7 +110,8 @@ public class OrdenServicioController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
-		response.put("mensaje", "Orden de Servicio creada con éxito, con el ID " + ordenServicioNew.getIdOrdenServicio());
+		response.put("mensaje",
+				"Orden de Servicio creada con éxito, con el ID " + ordenServicioNew.getIdOrdenServicio());
 		response.put("Orden de Servicio", ordenServicioNew);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
@@ -117,7 +130,8 @@ public class OrdenServicioController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
-		response.put("mensaje", "Orden de Servicio modificada con éxito, con el ID " + ordenServicioNew.getIdOrdenServicio());
+		response.put("mensaje",
+				"Orden de Servicio modificada con éxito, con el ID " + ordenServicioNew.getIdOrdenServicio());
 		response.put("Orden de Servicio", ordenServicioNew);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}

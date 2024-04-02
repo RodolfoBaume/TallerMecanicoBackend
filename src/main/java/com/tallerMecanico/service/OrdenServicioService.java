@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +24,12 @@ public class OrdenServicioService implements IOrdenServicioService {
 	@Transactional(readOnly = true)
 	public List<OrdenServicio> findAll() {
 		return (List<OrdenServicio>) ordenServicioRepository.findAll(Sort.by("idOrdenServicio"));
+	}
+	
+	// consulta todos para paginación
+	@Transactional(readOnly = true)
+	public Page<OrdenServicio> findAllPage(Pageable pageable) {
+		return ordenServicioRepository.findAll(pageable);
 	}
 
 	// consulta por id

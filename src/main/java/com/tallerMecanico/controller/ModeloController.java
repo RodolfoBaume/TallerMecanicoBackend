@@ -6,6 +6,10 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -38,6 +42,13 @@ public class ModeloController {
 	@ResponseStatus(HttpStatus.OK)
 	public List<Modelo> consulta() {
 		return modeloService.findAll();
+	}
+
+	// Consulta paginación
+	@GetMapping("/modelos/page/{page}")
+	public Page<Modelo> consultaPage(@PathVariable Integer page) {
+		Pageable pageable = PageRequest.of(page, 10, Sort.by("idModelo").ascending());
+		return modeloService.findAllPage(pageable);
 	}
 
 	// Consulta por id

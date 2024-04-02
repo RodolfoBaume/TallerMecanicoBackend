@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,6 +38,12 @@ public class UsuarioService implements IUsuarioService {
 	@Transactional(readOnly = true)
 	public List<Usuario> findAll() {
 		return (List<Usuario>) usuarioRepository.findAll(Sort.by("idUsuario"));
+	}
+	
+	// consulta todos para paginación
+	@Transactional(readOnly = true)
+	public Page<Usuario> findAllPage(Pageable pageable) {
+		return usuarioRepository.findAll(pageable);
 	}
 
 	// consulta por id
