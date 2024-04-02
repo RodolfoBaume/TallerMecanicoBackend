@@ -40,6 +40,8 @@ public class OrdenServicioService implements IOrdenServicioService {
 		ordenServicioEntity.setObservaciones(ordenServicio.observaciones());
 		ordenServicioEntity.setEstatusServicio(ordenServicio.estatusServicio());
 		ordenServicioEntity.setVehiculo(ordenServicio.vehiculo());
+		ordenServicioEntity.setComentarios(ordenServicio.comentarios());
+		ordenServicioEntity.setEmpleado(ordenServicio.empleado());
 		return ordenServicioRepository.save(ordenServicioEntity);
 	}
 
@@ -60,6 +62,8 @@ public class OrdenServicioService implements IOrdenServicioService {
 		ordenServicioEntity.setObservaciones(ordenServicio.observaciones());
 		ordenServicioEntity.setEstatusServicio(ordenServicio.estatusServicio());
 		ordenServicioEntity.setVehiculo(ordenServicio.vehiculo());
+		ordenServicioEntity.setComentarios(ordenServicio.comentarios());
+		ordenServicioEntity.setEmpleado(ordenServicio.empleado());
 		return ordenServicioRepository.save(ordenServicioEntity);
 	}
 }

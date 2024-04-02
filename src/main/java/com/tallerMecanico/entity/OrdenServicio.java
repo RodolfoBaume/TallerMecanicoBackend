@@ -7,6 +7,7 @@ import java.util.List;
 
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 
 import jakarta.persistence.FetchType;
@@ -44,9 +45,17 @@ public class OrdenServicio {
 	private EstatusServicio estatusServicio;
 	@OneToOne(mappedBy = "ordenServicio")
 	private Factura factura;
+	
 	@ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "vehiculoId")
     private Vehiculo vehiculo;
+	
 	@OneToMany(mappedBy = "ordenServicio", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DetalleOrdenServicio> detalleOrdenServicios = new ArrayList<>();
+	@Column(columnDefinition = "TEXT") // tipo text
+	private String comentarios;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "empleadoId")
+	private Empleado empleado;
 }
