@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tallerMecanico.dto.RolDto;
 import com.tallerMecanico.entity.Rol;
-import com.tallerMecanico.service.IRolService;
+import com.tallerMecanico.service.RolService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,
@@ -35,7 +35,7 @@ import com.tallerMecanico.service.IRolService;
 public class RolController {
 
 	@Autowired
-	private IRolService rolService;
+	private RolService rolService;
 
 	// Consulta todos
 	@GetMapping("/roles")

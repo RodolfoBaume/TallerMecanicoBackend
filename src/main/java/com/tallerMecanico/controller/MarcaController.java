@@ -28,7 +28,7 @@ import com.tallerMecanico.dto.MarcaDto;
 import com.tallerMecanico.entity.Marca;
 import com.tallerMecanico.entity.Modelo;
 import com.tallerMecanico.repository.IModeloRepository;
-import com.tallerMecanico.service.IMarcaService;
+import com.tallerMecanico.service.MarcaService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,
@@ -37,7 +37,7 @@ import com.tallerMecanico.service.IMarcaService;
 public class MarcaController {
 
 	@Autowired
-	private IMarcaService marcaService;
+	private MarcaService marcaService;
 	@Autowired
 	private IModeloRepository modeloRepository;
 

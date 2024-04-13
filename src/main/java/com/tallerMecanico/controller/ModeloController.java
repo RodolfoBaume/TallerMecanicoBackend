@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tallerMecanico.dto.ModeloDto;
 import com.tallerMecanico.entity.Modelo;
-import com.tallerMecanico.service.IModeloService;
+import com.tallerMecanico.service.ModeloService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,
@@ -35,7 +35,7 @@ import com.tallerMecanico.service.IModeloService;
 public class ModeloController {
 
 	@Autowired
-	private IModeloService modeloService;
+	private ModeloService modeloService;
 
 	// Consulta todos
 	@GetMapping("/modelos")

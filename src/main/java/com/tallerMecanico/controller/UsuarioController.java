@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tallerMecanico.dto.RegistroResponseDto;
 import com.tallerMecanico.dto.UsuarioDto;
 import com.tallerMecanico.entity.Usuario;
-import com.tallerMecanico.service.IUsuarioService;
+import com.tallerMecanico.service.UsuarioService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,
@@ -37,7 +37,7 @@ import com.tallerMecanico.service.IUsuarioService;
 public class UsuarioController {
 
 	@Autowired
-	private IUsuarioService usuarioService;
+	private UsuarioService usuarioService;
 
 	// Consulta todos
 	@GetMapping("/usuarios")

@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tallerMecanico.dto.TipoMotorDto;
 import com.tallerMecanico.entity.TipoMotor;
-import com.tallerMecanico.service.ITipoMotorService;
+import com.tallerMecanico.service.TipoMotorService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,
@@ -35,7 +35,7 @@ import com.tallerMecanico.service.ITipoMotorService;
 public class TipoMotorController {
 
 	@Autowired
-	private ITipoMotorService tipoMotorService;
+	private TipoMotorService tipoMotorService;
 
 	// Consulta todos
 	@GetMapping("/tiposMotor")

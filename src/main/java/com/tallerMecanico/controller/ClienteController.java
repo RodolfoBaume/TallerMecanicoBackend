@@ -31,7 +31,7 @@ import com.tallerMecanico.dto.RegistroUsuarioClienteDto;
 import com.tallerMecanico.entity.Cliente;
 import com.tallerMecanico.entity.Vehiculo;
 import com.tallerMecanico.repository.IVehiculoRepository;
-import com.tallerMecanico.service.IClienteService;
+import com.tallerMecanico.service.ClienteService;
 import com.tallerMecanico.service.IUsuarioService;
 
 @RestController
@@ -41,7 +41,7 @@ import com.tallerMecanico.service.IUsuarioService;
 public class ClienteController {
 
 	@Autowired
-	private IClienteService clienteService;
+	private ClienteService clienteService;
 	@Autowired
 	private IUsuarioService usuarioService;
 
