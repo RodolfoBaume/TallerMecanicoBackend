@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -40,6 +41,7 @@ public class Vehiculo {
     private Cliente cliente;
 	@OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "vehiculoId")
+	@JsonManagedReference
     private List<OrdenServicio> ordenServicio;
 	
 	public Vehiculo() {

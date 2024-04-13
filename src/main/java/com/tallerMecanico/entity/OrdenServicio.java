@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -39,6 +40,7 @@ public class OrdenServicio {
 	
 	@ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "vehiculoId")
+	@JsonBackReference
     private Vehiculo vehiculo;
 	
 	@OneToMany(mappedBy = "ordenServicio", cascade = CascadeType.ALL, orphanRemoval = true)
