@@ -47,6 +47,7 @@ public class OrdenServicioService implements IOrdenServicioService {
 		ordenServicioEntity.setKilometraje(ordenServicio.kilometraje());
 		ordenServicioEntity.setObservaciones(ordenServicio.observaciones());
 		ordenServicioEntity.setEstatusServicio(ordenServicio.estatusServicio());
+		ordenServicioEntity.setFactura(ordenServicio.factura());
 		ordenServicioEntity.setVehiculo(ordenServicio.vehiculo());
 		ordenServicioEntity.setComentarios(ordenServicio.comentarios());
 		ordenServicioEntity.setEmpleado(ordenServicio.empleado());

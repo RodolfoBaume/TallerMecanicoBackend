@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -24,6 +25,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "ordenesServicios")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idOrdenServicio")
 public class OrdenServicio {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,9 +40,9 @@ public class OrdenServicio {
 	@OneToOne(mappedBy = "ordenServicio")
 	private Factura factura;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "vehiculoId")
-	@JsonBackReference
+	//@JsonBackReference
     private Vehiculo vehiculo;
 	
 	@OneToMany(mappedBy = "ordenServicio", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -48,7 +50,7 @@ public class OrdenServicio {
 	@Column(columnDefinition = "TEXT") // tipo text
 	private String comentarios;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "empleadoId")
 	private Empleado empleado;
 

@@ -47,7 +47,7 @@ public class ModeloController {
 	// Consulta paginación
 	@GetMapping("/modelos/page/{page}")
 	public Page<Modelo> consultaPage(@PathVariable Integer page) {
-		Pageable pageable = PageRequest.of(page, 10, Sort.by("idModelo").ascending());
+		Pageable pageable = PageRequest.of(page, 50, Sort.by("idModelo").ascending());
 		return modeloService.findAllPage(pageable);
 	}
 
