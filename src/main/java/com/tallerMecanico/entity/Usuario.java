@@ -27,7 +27,7 @@ public class Usuario {
 	private long idUsuario;
 	private String email;
 	private String password;
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	@JoinTable(name = "usuarios_roles", joinColumns = @JoinColumn(name = "usuario_id", referencedColumnName = "id_usuario")
 	, inverseJoinColumns = @JoinColumn(name = "rol_id", referencedColumnName = "id_rol"))
 	private List<Rol> rol = new ArrayList<>();
