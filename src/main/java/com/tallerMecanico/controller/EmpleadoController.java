@@ -129,12 +129,16 @@ public class EmpleadoController {
 
 	// Eliminar empleado
 	@DeleteMapping("/empleados/{id}")
-	public ResponseEntity<String> eliminarEmpleado(@PathVariable Long id) {
+	public ResponseEntity<?> eliminarEmpleado(@PathVariable Long id) {
+		Map<String, Object> response = new HashMap<>();
+		
 		try {
 			empleadoService.deleteEmpleado(id);
-			return new ResponseEntity<>("Empleado eliminado exitosamente", HttpStatus.OK);
+			response.put("mensaje", "Registro Eliminado");
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 		} catch (Error e) {
-			return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+			response.put("mensaje", "Error al realizar la operación en la base de datos");
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
 	}
 
